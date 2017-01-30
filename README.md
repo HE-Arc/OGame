@@ -5,6 +5,7 @@
 ### Technologies utilisées:
 
 * Ruby on Rails
+* Docker
 
 ### Auteurs:
 
