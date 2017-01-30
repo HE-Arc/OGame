@@ -14,7 +14,7 @@
 
 ### Comment lancer ?
 
-Premièrement, il faut vous assurer que Docker et Docker Compose soient installés sur votre machine, et sont mis à jour. (Docker v1.13.0 et Docker Compose v1.10.0 fonctionnent)
+Premièrement, il faut vous assurer que Docker et Docker Compose soient installés sur votre machine, et soient mis à jour. (Docker v1.13.0 et Docker Compose v1.10.0 fonctionnent)
 
 Ensuite, il suffit de construire l'environnement, à l'aide de la commande `docker-compose build`. Cette commande devra être executée après chaque modification dans les fichiers `Dockerfile` et `Gemfile`.
 
