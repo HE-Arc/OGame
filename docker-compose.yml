@@ -12,3 +12,4 @@ services:
             - "3000:3000"
         depends_on:
             - db
+        user: "1000:1000"
