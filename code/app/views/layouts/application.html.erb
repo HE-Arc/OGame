@@ -9,6 +9,29 @@
   </head>
 
   <body>
+      <nav class="navbar navbar-toggleable-md navbar-inverse bg-inverse fixed-top">
+        <a class="navbar-brand" href="/">Galactic Empire</a>
+        <div class="collapse navbar-collapse navbar-right">
+          <ul class="navbar-nav mr-auto">
+            <% unless @actual_user == nil %>
+              <li class="nav-item dropdown navbar-right">
+                <a class="nav-link dropdown-toggle" href="/" id="user_dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><%= @actual_user.name %></a>
+                <div class="dropdown-menu" aria-labelledby="user_dropdown">
+                  <a class="dropdown-item" href="#">Profile</a>
+                  <a class="dropdown-item" href="#">Logout</a>
+                </div>
+              </li>
+            <% else %>
+              <li class="nav-item navbar-right">
+                <a href="#" class="btn btn-outline-info">Signup</a>
+              </li>
+              <li class="nav-item navbar-right">
+                <a href="#" class="btn btn-outline-success">Login</a>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+      </nav>
     <%= yield %>
   </body>
 </html>

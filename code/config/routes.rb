@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+
+  get 'home/index'
+
   #get 'admin/index'
   #get 'sessions/new'
   get 'sessions/create'
@@ -12,7 +15,8 @@ Rails.application.routes.draw do
     delete 'logout' => :destroy
   end
 
-  root 'admin#index'
+  root 'home#index'
+
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
