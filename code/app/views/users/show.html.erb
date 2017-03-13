@@ -1,9 +1,14 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Name:</strong>
-  <%= @user.name %>
-</p>
-
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+<div class="jumbotron">
+  <p>
+    <strong>Name:</strong>
+    <%= @user.name %>
+  </p>
+  <p>
+      <strong>My planets:</strong>
+      <ul>
+        <% @user.planets.each do |p| %>
+          <li><%= p.name %></li>
+        <% end %>
+      </ul>
+  </p>
+</div>
