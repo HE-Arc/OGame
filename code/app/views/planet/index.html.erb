@@ -1,7 +1,12 @@
 <div class="jumbotron">
   <ul>
-    <% @planets.each do |p| %>
-      <li><%= p.name %></li>
+    <% @solarsystems.each do |s| %>
+      <li>Système solaire <%= s.name %></li>
+      <ul>
+        <% s.planets.each do |p| %>
+          <li><a href="<%= url_for(controller: 'planet', action: 'show', id: p.id) %>"><%= p.name %></a></li>
+        <% end %>
+      </ul>
     <% end %>
   </ul>
 </div>
