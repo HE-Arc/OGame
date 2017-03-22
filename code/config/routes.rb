@@ -23,6 +23,10 @@ Rails.application.routes.draw do
     get 'home' => :home
   end
 
+  controller :planets do
+    get 'planet' => :planet
+  end
+
   root 'home#index'
 
 
