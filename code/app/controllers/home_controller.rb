@@ -4,4 +4,7 @@ class HomeController < ApplicationController
   def index
       @variable = 4
   end
+
+  def home
+  end
 end
