@@ -36,7 +36,7 @@ class UsersController < ApplicationController
     @user.planets << mother_planet
 
     # Populating solar system
-    0.upto(rand(4..7)).each do |i|
+    1.upto(rand(4..7)).each do |i|
       tmp_planet = Planet.create(name: solarsys.name+"-"+i.to_s, solarsystem: solarsys, nb_cases: rand(6..10), position_x: rand(-3..3), position_y: rand(-3..3), position_z: rand(-3..3))
       solarsys.planets << tmp_planet
     end

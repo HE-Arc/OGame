@@ -7,7 +7,12 @@
       <strong>My planets:</strong>
       <ul>
         <% @user.planets.each do |p| %>
-          <li><%= p.name %></li>
+          <% if p.id == @user.planet_id %>
+            <li><b><%= p.name %></b></li>
+          <% else %>
+            <li><%= p.name %></li>
+          <% end %>
+
         <% end %>
       </ul>
   </p>

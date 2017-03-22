@@ -1,0 +1,8 @@
+<div class="jumbotron">
+    <h1><%= @selected_planet.name %></h1>
+    <% unless @selected_planet.user == nil %>
+      <p>Owner: <%= @selected_planet.user.name %></p>
+    <% else %>
+      <p>This planet is not colonized... yet !</p>
+    <% end %>
+</div>
