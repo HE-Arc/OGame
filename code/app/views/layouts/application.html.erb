@@ -18,7 +18,12 @@
           <ul class="navbar-nav">
             <% unless @actual_user == nil %>
               <li class="navbar-text">
-                Métal: <%= @actual_user.metal %>   Energie: <%= @actual_user.energy %>   Monnaie Galactique: <%=@actual_user.money %>
+                <img src="<%= image_path('metal-bar.png') %>" width="16" height="16"/>
+                Métal: <%= @actual_user.metal %>
+                <img src="<%= image_path('divert.png') %>" width="16" height="16"/>
+                Energie: <%= @actual_user.energy %>
+                <img src="<%= image_path('coins.png') %>" width="16" height="16"/>
+                Monnaie Galactique: <%=@actual_user.money %>
               </li>
               <li class="nav-item dropdown navbar-right">
                 <a class="nav-link dropdown-toggle" href="/" id="user_dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><%= @actual_user.name %></a>
