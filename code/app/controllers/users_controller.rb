@@ -27,19 +27,18 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
 
     solarsys = Solarsystem.create(name: [*('A'..'Z')].sample(6).join, position_x: rand(-10..10), position_y: rand(-10..10), position_z: rand(-10..10))
-    mother_planet = Planet.new(name: solarsys.name+"-0", solarsystem: solarsys, nb_cases: rand(8..13), position_x: rand(-3..3), position_y: rand(-3..3), position_z: rand(-3..3))
-    mother_planet.save
+    mother_planet = Planet.create(name: solarsys.name+"-0", solarsystem: solarsys, nb_cases: rand(8..13), position_x: rand(-3..3), position_y: rand(-3..3), position_z: rand(-3..3), user: @user)
     solarsys.planets << mother_planet
-    @user.planet = mother_planet
+    @user.planet_id = mother_planet.id
+    @user.planets << mother_planet
 
-    for i in 0..rand(4..7)
-      solarsys.planets.create(name: solarsys.name+"-"+i.to_s, solarsystem: solarsys, nb_cases: rand(6..10), position_x: rand(-3..3), position_y: rand(-3..3), position_z: rand(-3..3))
+    0.upto(rand(4..7)).each do |i|
+      tmp_planet = Planet.create(name: solarsys.name+"-"+i.to_s, solarsystem: solarsys, nb_cases: rand(6..10), position_x: rand(-3..3), position_y: rand(-3..3), position_z: rand(-3..3))
+      solarsys.planets << tmp_planet
     end
 
     respond_to do |format|
       if @user.save
-        mother_planet.user = @user
-        mother_planet.save
         format.html { redirect_to users_url, notice: 'User was successfully created.' }
         format.json { render :show, status: :created, location: @user }
       else
