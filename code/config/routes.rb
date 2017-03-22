@@ -16,6 +16,10 @@ Rails.application.routes.draw do
     delete 'logout' => :destroy
   end
 
+  controller :planets do
+    get 'planet' => :planet
+  end
+
   root 'home#index'
 
 
