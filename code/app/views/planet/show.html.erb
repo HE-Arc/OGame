@@ -1,7 +1,11 @@
 <div class="jumbotron">
     <h1><%= @selected_planet.name %></h1>
+  <p> position : <%= @selected_planet.position_x %>:<%= @selected_planet.position_y %>:<%= @selected_planet.position_z %></p>
+  <p> range : <%= @range[1] %> parsec and <%= @range[0] %> units</p>
+
+
     <% unless @selected_planet.user == nil %>
-      <p>Owner: <%= @selected_planet.user.name %></p>
+      <p>Owner: <%= @selected_planet.user.name %> </p>
     <% else %>
       <p>This planet is not colonized... yet !</p>
     <% end %>
