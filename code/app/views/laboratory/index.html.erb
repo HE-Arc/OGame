@@ -1,0 +1,16 @@
+<div class="jumbotron">
+    <% Technology.limit(4).each do |t|%>
+        <div class="card">
+            <div class="card-header">
+                Technologie du bâtiment
+            </div>
+            <div class="card-block">
+                <h4 class="card-title"><%= t.name%></h4>
+                <p class="card-text"><%= t.description %></p>
+                <button type="button" class="btn btn-primary">Buy with <%= t.costEnergy %> metal</button>
+                <button type="button" class="btn btn-danger">Buy with <%= t.costMoney %> money</button>
+            </div>
+        </div>
+    <% end %>
+</div>
+
