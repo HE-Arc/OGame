@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
     user = User.find_by(name: params[:name])
     if user and user.authenticate(params[:password])
       session[:user_id] = user.id
-      redirect_to user_path(user.id) #=> change redirect to home
+      redirect_to user_path(user.id)
     else
       redirect_to login_url, alert:"Invalid Username or Password"
     end
