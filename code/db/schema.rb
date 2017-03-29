@@ -10,16 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170322115831) do
+ActiveRecord::Schema.define(version: 20170329120656) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "buildings", force: :cascade do |t|
     t.string   "name"
-    t.integer  "type"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "description"
+    t.integer  "costMoney"
+    t.integer  "costMetal"
+    t.integer  "metalFarmPerMinute"
+    t.integer  "energyFarmPerMinute"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
   end
 
   create_table "buildings_planets", id: false, force: :cascade do |t|
@@ -29,9 +33,13 @@ ActiveRecord::Schema.define(version: 20170322115831) do
 
   create_table "defenses", force: :cascade do |t|
     t.string   "name"
-    t.integer  "type"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "description"
+    t.integer  "costMoney"
+    t.integer  "costMetal"
+    t.boolean  "isActive"
+    t.integer  "points"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "defenses_planets", id: false, force: :cascade do |t|
@@ -79,18 +87,27 @@ ActiveRecord::Schema.define(version: 20170322115831) do
 
   create_table "spaceships", force: :cascade do |t|
     t.string   "name"
-    t.integer  "type"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "description"
+    t.integer  "costMoney"
+    t.integer  "costMetal"
+    t.integer  "energyTank"
+    t.integer  "attackPoints"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
   create_table "technologies", force: :cascade do |t|
     t.string   "name"
-    t.integer  "type"
     t.text     "description"
-    t.integer  "cost"
+    t.integer  "costMoney"
+    t.integer  "costEnergy"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+  end
+
+  create_table "technologies_users", id: false, force: :cascade do |t|
+    t.integer "user_id",       null: false
+    t.integer "technology_id", null: false
   end
 
   create_table "users", force: :cascade do |t|
