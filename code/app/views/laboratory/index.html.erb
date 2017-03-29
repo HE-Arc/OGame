@@ -1,8 +1,8 @@
 <div class="jumbotron">
-    <% Technology.limit(4).each do |t|%>
+    <% Technology.where(typeTech: "bâtiment").each do |t|%>
         <div class="card">
             <div class="card-header">
-                Technologie du bâtiment
+                Technologie du <%= t.typeTech%>
             </div>
             <div class="card-block">
                 <h4 class="card-title"><%= t.name%></h4>

@@ -1,8 +1,6 @@
 Rails.application.routes.draw do
 
-  get 'laboratory/index'
-
-  get 'laboratory/show'
+  get 'laboratory' => 'laboratory#index'
 
   get 'home/index'
 
