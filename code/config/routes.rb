@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  get 'laboratory/index'
+
+  get 'laboratory/show'
+
   get 'home/index'
 
   #get 'admin/index'
