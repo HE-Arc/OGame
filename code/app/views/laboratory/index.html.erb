@@ -1,6 +1,21 @@
 <div class="jumbotron">
+    <div class="card-header">
+        <ul class="nav nav-tabs card-header-tabs">
+            <li class="nav-item">
+            <a class="nav-link active" href="#">Active</a>
+            </li>
+
+            <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+            </li>
+                    
+            <li class="nav-item">
+            <a class="nav-link disabled" href="#">Disabled</a>
+            </li>
+        </ul>
+    </div>
+    
     <% Technology.where(typeTech: "bâtiment").each do |t|%>
-        <div class="card">
             <div class="card-header">
                 Technologie du <%= t.typeTech%>
             </div>
@@ -10,7 +25,6 @@
                 <button type="button" class="btn btn-primary">Buy with <%= t.costEnergy %> metal</button>
                 <button type="button" class="btn btn-danger">Buy with <%= t.costMoney %> money</button>
             </div>
-        </div>
     <% end %>
 </div>
 
