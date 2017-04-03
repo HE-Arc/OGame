@@ -1,30 +1,128 @@
 <div class="jumbotron">
     <div class="card-header">
-        <ul class="nav nav-tabs card-header-tabs">
+        <ul class="nav nav-pills card-header-pills">
             <li class="nav-item">
-            <a class="nav-link active" href="#">Active</a>
+            <a class="nav-link active" onclick="showBatiment();" id="batLink">Bâtiment</a>
             </li>
 
             <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
+            <a class="nav-link" onclick="showDP();" id="DPLink">Défense passive</a>
             </li>
                     
             <li class="nav-item">
-            <a class="nav-link disabled" href="#">Disabled</a>
+            <a class="nav-link" onclick="showDA();" id="DALink">Défense active</a>
+            </li>
+
+            <li class="nav-item">
+            <a class="nav-link" onclick="showShip();" id="ShipLink">Vaisseau</a>
             </li>
         </ul>
     </div>
-    
-    <% Technology.where(typeTech: "bâtiment").each do |t|%>
-            <div class="card-header">
-                Technologie du <%= t.typeTech%>
+
+    <div style="display : block;" id="batTech">
+        <div class="card-header text-center">
+            Technologie du bâtiment
+        </div>
+        <% Technology.where(typeTech: "bâtiment").each do |t|%>
+            <div class="card card-outline-primary mb-3 text-center">
+                <div class="card-block text-center">
+                    <h4 class="card-title"><%= t.name%></h4>
+                    <p class="card-text"><%= t.description %></p>
+                    <button type="button" class="btn btn-primary">Buy with <%= t.costEnergy %> metal</button>
+                    <button type="button" class="btn btn-danger">Buy with <%= t.costMoney %> money</button>
+                </div>
             </div>
-            <div class="card-block">
-                <h4 class="card-title"><%= t.name%></h4>
-                <p class="card-text"><%= t.description %></p>
-                <button type="button" class="btn btn-primary">Buy with <%= t.costEnergy %> metal</button>
-                <button type="button" class="btn btn-danger">Buy with <%= t.costMoney %> money</button>
+        <% end %>
+    </div>
+
+    <div style="display : none;" id="daTech">
+        <div class="card-header text-center">
+            Technologie de défense active
+        </div>
+        <% Technology.where(typeTech: "défense active").each do |t|%>
+            <div class="card card-outline-primary mb-3 text-center">
+                <div class="card-block text-center">
+                    <h4 class="card-title"><%= t.name%></h4>
+                    <p class="card-text"><%= t.description %></p>
+                    <button type="button" class="btn btn-primary">Buy with <%= t.costEnergy %> metal</button>
+                    <button type="button" class="btn btn-danger">Buy with <%= t.costMoney %> money</button>
+                </div>
             </div>
-    <% end %>
+        <% end %>
+    </div>
+
+    <div style="display : none;" id="dpTech">
+        <div class="card-header text-center">
+            Technologie de défense passive
+        </div>
+        <% Technology.where(typeTech: "défense passive").each do |t|%>
+            <div class="card card-outline-primary mb-3 text-center">
+                <div class="card-block text-center">
+                    <h4 class="card-title"><%= t.name%></h4>
+                    <p class="card-text"><%= t.description %></p>
+                    <button type="button" class="btn btn-primary">Buy with <%= t.costEnergy %> metal</button>
+                    <button type="button" class="btn btn-danger">Buy with <%= t.costMoney %> money</button>
+                </div>
+            </div>
+        <% end %>
+    </div>
+
+    <div style="display : none;" id="shipTech">
+        <div class="card-header text-center">
+            Technologie des vaisseaux
+        </div>
+        <% Technology.where(typeTech: "vaisseau").each do |t|%>
+            <div class="card card-outline-primary mb-3 text-center">
+                <div class="card-block text-center">
+                    <h4 class="card-title"><%= t.name%></h4>
+                    <p class="card-text"><%= t.description %></p>
+                    <button type="button" class="btn btn-primary">Buy with <%= t.costEnergy %> metal</button>
+                    <button type="button" class="btn btn-danger">Buy with <%= t.costMoney %> money</button>
+                </div>
+            </div>
+        <% end %>
+    </div>
 </div>
+
+<script>
+
+    function hideAll(){
+        $("#batLink").removeClass("active");
+        $("#DALink").removeClass("active");
+        $("#DPLink").removeClass("active");
+        $("#ShipLink").removeClass("active");
+
+        $("#batTech").css("display", "none");
+        $("#dpTech").css("display", "none");
+        $("#daTech").css("display", "none");
+        $("#shipTech").css("display", "none");
+    }
+
+    function showBatiment(){
+        hideAll();
+        $("#batLink").addClass("active");
+        $("#batTech").css("display", "block");
+    }
+
+    function showDA(){
+        hideAll();
+        $("#batLink").removeClass("active")
+        $("#DALink").addClass("active");
+        $("#daTech").css("display", "block");
+    }
+
+    function showDP(){
+        hideAll();
+        $("#batLink").removeClass("active")
+        $("#DPLink").addClass("active");
+        $("#dpTech").css("display", "block");
+    }
+
+    function showShip(){
+        hideAll(); 
+        $("#batLink").removeClass("active")
+        $("#ShipLink").addClass("active");
+        $("#shipTech").css("display", "block");
+    }
+</script>
 
