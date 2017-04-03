@@ -2,11 +2,24 @@
     <h1><%= @selected_planet.name %></h1>
   <p> position : <%= @selected_planet.position_x %>:<%= @selected_planet.position_y %>:<%= @selected_planet.position_z %></p>
   <p> range : <%= @range[1] %> parsec and <%= @range[0] %> units</p>
+  <p> slots : <%= @selected_planet.buildings.count %>/<%= @selected_planet.nb_cases %></p>
+  <ul>
+    <% @selected_planet.buildings.each do |b| %>
+      <li><%= b %> </li>
+    <% end %>
+  </ul>
+    <% if @selected_planet.user == @actual_user  %>
+      <% if @selected_planet.nb_cases-@selected_planet.buildings.count > 0 %>
+        <% @buildings.each do |b| %>
+            <p><b><a><%= button_to b.name %> <%= b.costMoney %></a></b></p>
+        <% end %>
+      <% else %>
+        <p>Planète pleine</p>
+      <% end %>
 
-
-    <% unless @selected_planet.user == nil %>
-      <p>Owner: <%= @selected_planet.user.name %> </p>
-    <% else %>
+    <% elsif @selected_planet.user.nil? %>
       <p>This planet is not colonized... yet !</p>
+    <% else %>
+      <p>Owner: <%= @selected_planet.user.name %> </p>
     <% end %>
 </div>
