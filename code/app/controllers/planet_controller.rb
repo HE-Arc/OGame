@@ -9,4 +9,10 @@ class PlanetController < ApplicationController
     @range = Planet.find(@actual_user.planet_id).distanceto(@selected_planet)
     @buildings = Building.all
   end
+
+  def buyBuilding
+    @selected_planet = Planet.find params[:planet]
+    @building = Building.find params[:building]
+    @selected_planet.construct(@building)
+  end
 end

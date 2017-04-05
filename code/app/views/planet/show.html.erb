@@ -5,13 +5,13 @@
   <p> slots : <%= @selected_planet.buildings.count %>/<%= @selected_planet.nb_cases %></p>
   <ul>
     <% @selected_planet.buildings.each do |b| %>
-      <li><%= b %> </li>
+      <li><%= b.name %> </li>
     <% end %>
   </ul>
     <% if @selected_planet.user == @actual_user  %>
       <% if @selected_planet.nb_cases-@selected_planet.buildings.count > 0 %>
         <% @buildings.each do |b| %>
-            <p><b><a><%= button_to b.name %> <%= b.costMoney %></a></b></p>
+              <p><%= button_to b.name, {action: "buyBuilding", building: b.id, planet: @selected_planet.id} %> <%= b.costMoney %></p>
         <% end %>
       <% else %>
         <p>Planète pleine</p>

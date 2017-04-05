@@ -15,6 +15,8 @@ Rails.application.routes.draw do
   get 'planets' => 'planet#index'
   get 'planets/:id' => 'planet#show'
 
+  post 'buyBuilding' => 'planet#buyBuilding'
+
   controller :sessions do
     get 'login' => :new
     post 'login' => :create
