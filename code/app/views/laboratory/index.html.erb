@@ -30,7 +30,7 @@
                     <p class="card-text"><%= t.description %></p>
                     <% unless @actual_user.technologies.include? t %>
                     <button type="button" class="btn btn-primary" onclick="clickModal(<%= t.id %>, '<%= t.name %>', <%= t.costEnergy %>, 0)" data-toggle="modal" data-target="#mymodal">Acheter avec <%= t.costEnergy %> d'energie</button>
-                    <button type="button" class="btn btn-danger" onclick="clickModal(<%= t.id %>, '<%= t.name %>', <%= t.costEnergy %>, 1)" data-toggle="modal" data-target="#mymodal">Acheter avec <%= t.costMoney %> monnaie galactique</button>
+                    <button type="button" class="btn btn-danger" onclick="clickModal(<%= t.id %>, '<%= t.name %>', <%= t.costMoney %>, 1)" data-toggle="modal" data-target="#mymodal">Acheter avec <%= t.costMoney %> monnaie galactique</button>
                     <% else %>
                     <h5>Technologie acquise !</h5>
                     <% end %>
@@ -50,7 +50,7 @@
                     <p class="card-text"><%= t.description %></p>
                     <% unless @actual_user.technologies.include? t %>
                     <button type="button" class="btn btn-primary" onclick="clickModal(<%= t.id %>, '<%= t.name %>', <%= t.costEnergy %>, 0)" data-toggle="modal" data-target="#mymodal">Acheter avec <%= t.costEnergy %> d'energie</button>
-                    <button type="button" class="btn btn-danger" onclick="clickModal(<%= t.id %>, '<%= t.name %>', <%= t.costEnergy %>, 1)" data-toggle="modal" data-target="#mymodal">Acheter avec <%= t.costMoney %> monnaie galactique</button>
+                    <button type="button" class="btn btn-danger" onclick="clickModal(<%= t.id %>, '<%= t.name %>', <%= t.costMoney %>, 1)" data-toggle="modal" data-target="#mymodal">Acheter avec <%= t.costMoney %> monnaie galactique</button>
                     <% else %>
                     <h5>Technologie acquise !</h5>
                     <% end %>
@@ -70,7 +70,7 @@
                     <p class="card-text"><%= t.description %></p>
                     <% unless @actual_user.technologies.include? t %>
                     <button type="button" class="btn btn-primary" onclick="clickModal(<%= t.id %>, '<%= t.name %>', <%= t.costEnergy %>, 0)" data-toggle="modal" data-target="#mymodal">Acheter avec <%= t.costEnergy %> d'energie</button>
-                    <button type="button" class="btn btn-danger" onclick="clickModal(<%= t.id %>, '<%= t.name %>', <%= t.costEnergy %>, 1)" data-toggle="modal" data-target="#mymodal">Acheter avec <%= t.costMoney %> monnaie galactique</button>
+                    <button type="button" class="btn btn-danger" onclick="clickModal(<%= t.id %>, '<%= t.name %>', <%= t.costMoney %>, 1)" data-toggle="modal" data-target="#mymodal">Acheter avec <%= t.costMoney %> monnaie galactique</button>
                     <% else %>
                     <h5>Technologie acquise !</h5>
                     <% end %>
@@ -90,7 +90,7 @@
                     <p class="card-text"><%= t.description %></p>
                     <% unless @actual_user.technologies.include? t %>
                     <button type="button" class="btn btn-primary" onclick="clickModal(<%= t.id %>, '<%= t.name %>', <%= t.costEnergy %>, 0)" data-toggle="modal" data-target="#mymodal">Acheter avec <%= t.costEnergy %> d'energie</button>
-                    <button type="button" class="btn btn-danger" onclick="clickModal(<%= t.id %>, '<%= t.name %>', <%= t.costEnergy %>, 1)" data-toggle="modal" data-target="#mymodal">Acheter avec <%= t.costMoney %> monnaie galactique</button>
+                    <button type="button" class="btn btn-danger" onclick="clickModal(<%= t.id %>, '<%= t.name %>', <%= t.costMoney %>, 1)" data-toggle="modal" data-target="#mymodal">Acheter avec <%= t.costMoney %> monnaie galactique</button>
                     <% else %>
                     <h5>Technologie acquise !</h5>
                     <% end %>
