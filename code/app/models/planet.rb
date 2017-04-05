@@ -24,8 +24,10 @@ class Planet < ApplicationRecord
   end
 
   def construct(building)
-    if(self.buildings.count)
+    if(self.buildings.count < self.nb_cases)
       self.buildings.push(building)
+      return true
     end
+    return false
   end
 end
