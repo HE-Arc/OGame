@@ -1,5 +1,8 @@
 class LaboratoryController < ApplicationController
   def index
+    unless @hasLabo then
+      redirect_to user_path(@actual_user)
+    end
   end
 
   def buy
