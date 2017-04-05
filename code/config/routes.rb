@@ -1,11 +1,10 @@
 Rails.application.routes.draw do
 
   get 'laboratory' => 'laboratory#index'
+  post 'laboratory/buy' => 'laboratory#buy'
 
   get 'home/index'
 
-  #get 'admin/index'
-  #get 'sessions/new'
   get 'sessions/create'
   get 'sessions/destroy'
   resources :users
