@@ -29,10 +29,18 @@
                     <h4 class="card-title"><%= t.name%></h4>
                     <p class="card-text"><%= t.description %></p>
                     <% unless @actual_user.technologies.include? t %>
-                    <button type="button" class="btn btn-primary" onclick="clickModal(<%= t.id %>, '<%= t.name %>', <%= t.costEnergy %>, 0)" data-toggle="modal" data-target="#mymodal">Acheter avec <%= t.costEnergy %> d'energie</button>
-                    <button type="button" class="btn btn-danger" onclick="clickModal(<%= t.id %>, '<%= t.name %>', <%= t.costMoney %>, 1)" data-toggle="modal" data-target="#mymodal">Acheter avec <%= t.costMoney %> monnaie galactique</button>
+                        <% if @actual_user.energy >= t.costEnergy %>
+                            <button type="button" class="btn btn-primary" onclick="clickModal(<%= t.id %>, '<%= t.name %>', <%= t.costEnergy %>, 0)" data-toggle="modal" data-target="#mymodal">Acheter avec <%= t.costEnergy %> d'energie</button>
+                        <% else %>
+                            <h5 class="text-danger">Il vous manque <%= t.costEnergy - @actual_user.energy %> énergie afin d'acquérir cette technologie</h5>
+                        <%end%>
+                        <% if @actual_user.money >= t.costMoney %>
+                            <button type="button" class="btn btn-danger" onclick="clickModal(<%= t.id %>, '<%= t.name %>', <%= t.costMoney %>, 1)" data-toggle="modal" data-target="#mymodal">Acheter avec <%= t.costMoney %> monnaie galactique</button>
+                        <% else %>
+                            <h5 class="text-danger">Il vous manque <%= t.costMoney - @actual_user.money %> énergie afin d'acquérir cette technologie</h5>
+                        <%end%>
                     <% else %>
-                    <h5>Technologie acquise !</h5>
+                        <h5 class="text-success">Technologie acquise !</h5>
                     <% end %>
                 </div>
             </div>
@@ -49,10 +57,18 @@
                     <h4 class="card-title"><%= t.name%></h4>
                     <p class="card-text"><%= t.description %></p>
                     <% unless @actual_user.technologies.include? t %>
-                    <button type="button" class="btn btn-primary" onclick="clickModal(<%= t.id %>, '<%= t.name %>', <%= t.costEnergy %>, 0)" data-toggle="modal" data-target="#mymodal">Acheter avec <%= t.costEnergy %> d'energie</button>
-                    <button type="button" class="btn btn-danger" onclick="clickModal(<%= t.id %>, '<%= t.name %>', <%= t.costMoney %>, 1)" data-toggle="modal" data-target="#mymodal">Acheter avec <%= t.costMoney %> monnaie galactique</button>
+                        <% if @actual_user.energy >= t.costEnergy %>
+                            <button type="button" class="btn btn-primary" onclick="clickModal(<%= t.id %>, '<%= t.name %>', <%= t.costEnergy %>, 0)" data-toggle="modal" data-target="#mymodal">Acheter avec <%= t.costEnergy %> d'energie</button>
+                        <% else %>
+                            <h5 class="text-danger">Il vous manque <%= t.costEnergy - @actual_user.energy %> énergie afin d'acquérir cette technologie</h5>
+                        <%end%>
+                        <% if @actual_user.money >= t.costMoney %>
+                            <button type="button" class="btn btn-danger" onclick="clickModal(<%= t.id %>, '<%= t.name %>', <%= t.costMoney %>, 1)" data-toggle="modal" data-target="#mymodal">Acheter avec <%= t.costMoney %> monnaie galactique</button>
+                        <% else %>
+                            <h5 class="text-danger">Il vous manque <%= t.costMoney - @actual_user.money %> énergie afin d'acquérir cette technologie</h5>
+                        <%end%>
                     <% else %>
-                    <h5>Technologie acquise !</h5>
+                        <h5 class="text-success">Technologie acquise !</h5>
                     <% end %>
                 </div>
             </div>
@@ -69,10 +85,18 @@
                     <h4 class="card-title"><%= t.name%></h4>
                     <p class="card-text"><%= t.description %></p>
                     <% unless @actual_user.technologies.include? t %>
-                    <button type="button" class="btn btn-primary" onclick="clickModal(<%= t.id %>, '<%= t.name %>', <%= t.costEnergy %>, 0)" data-toggle="modal" data-target="#mymodal">Acheter avec <%= t.costEnergy %> d'energie</button>
-                    <button type="button" class="btn btn-danger" onclick="clickModal(<%= t.id %>, '<%= t.name %>', <%= t.costMoney %>, 1)" data-toggle="modal" data-target="#mymodal">Acheter avec <%= t.costMoney %> monnaie galactique</button>
+                        <% if @actual_user.energy >= t.costEnergy %>
+                            <button type="button" class="btn btn-primary" onclick="clickModal(<%= t.id %>, '<%= t.name %>', <%= t.costEnergy %>, 0)" data-toggle="modal" data-target="#mymodal">Acheter avec <%= t.costEnergy %> d'energie</button>
+                        <% else %>
+                            <h5 class="text-danger">Il vous manque <%= t.costEnergy - @actual_user.energy %> énergie afin d'acquérir cette technologie</h5>
+                        <%end%>
+                        <% if @actual_user.money >= t.costMoney %>
+                            <button type="button" class="btn btn-danger" onclick="clickModal(<%= t.id %>, '<%= t.name %>', <%= t.costMoney %>, 1)" data-toggle="modal" data-target="#mymodal">Acheter avec <%= t.costMoney %> monnaie galactique</button>
+                        <% else %>
+                            <h5 class="text-danger">Il vous manque <%= t.costMoney - @actual_user.money %> énergie afin d'acquérir cette technologie</h5>
+                        <%end%>
                     <% else %>
-                    <h5>Technologie acquise !</h5>
+                        <h5 class="text-success">Technologie acquise !</h5>
                     <% end %>
                 </div>
             </div>
@@ -89,10 +113,18 @@
                     <h4 class="card-title"><%= t.name%></h4>
                     <p class="card-text"><%= t.description %></p>
                     <% unless @actual_user.technologies.include? t %>
-                    <button type="button" class="btn btn-primary" onclick="clickModal(<%= t.id %>, '<%= t.name %>', <%= t.costEnergy %>, 0)" data-toggle="modal" data-target="#mymodal">Acheter avec <%= t.costEnergy %> d'energie</button>
-                    <button type="button" class="btn btn-danger" onclick="clickModal(<%= t.id %>, '<%= t.name %>', <%= t.costMoney %>, 1)" data-toggle="modal" data-target="#mymodal">Acheter avec <%= t.costMoney %> monnaie galactique</button>
+                        <% if @actual_user.energy >= t.costEnergy %>
+                            <button type="button" class="btn btn-primary" onclick="clickModal(<%= t.id %>, '<%= t.name %>', <%= t.costEnergy %>, 0)" data-toggle="modal" data-target="#mymodal">Acheter avec <%= t.costEnergy %> d'energie</button>
+                        <% else %>
+                            <h5 class="text-danger">Il vous manque <%= t.costEnergy - @actual_user.energy %> énergie afin d'acquérir cette technologie</h5>
+                        <%end%>
+                        <% if @actual_user.money >= t.costMoney %>
+                            <button type="button" class="btn btn-danger" onclick="clickModal(<%= t.id %>, '<%= t.name %>', <%= t.costMoney %>, 1)" data-toggle="modal" data-target="#mymodal">Acheter avec <%= t.costMoney %> monnaie galactique</button>
+                        <% else %>
+                            <h5 class="text-danger">Il vous manque <%= t.costMoney - @actual_user.money %> énergie afin d'acquérir cette technologie</h5>
+                        <%end%>
                     <% else %>
-                    <h5>Technologie acquise !</h5>
+                        <h5 class="text-success">Technologie acquise !</h5>
                     <% end %>
                 </div>
             </div>
