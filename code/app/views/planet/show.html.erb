@@ -11,7 +11,10 @@
     <% if @selected_planet.user == @actual_user  %>
       <% if @selected_planet.nb_cases-@selected_planet.buildings.count > 0 %>
         <% @buildings.each do |b| %>
-              <p><%= button_to b.name, {action: "buyBuilding", building: b.id, planet: @selected_planet.id} %> <%= b.costMoney %></p>
+              <p><%= b.name %>
+                <%= button_to b.costMoney, {action: "buyBuilding", building: b.id, planet: @selected_planet.id, devise:"money"} %>
+                <%= button_to b.costMetal, {action: "buyBuilding", building: b.id, planet: @selected_planet.id, devise:"metal"} %>
+              </p>
         <% end %>
       <% else %>
         <p>Planète pleine</p>

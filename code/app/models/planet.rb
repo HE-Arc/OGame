@@ -23,11 +23,20 @@ class Planet < ApplicationRecord
     self.buildings
   end
 
-  def construct(building)
+  def construct(building, user, devise)
     if(self.buildings.count < self.nb_cases)
-      self.buildings.push(building)
-      return true
+      if(devise == "metal")
+        if(user.metal >= building.costMetal)
+          user.metal -= building.costMetal
+          self.buildings.push(building)
+        end
+      elsif(devise == "money")
+        if(user.money >= building.costMoney)
+          user.money -= building.costMoney
+          self.buildings.push(building)
+        end
+      end
     end
-    return false
+    user.save
   end
 end
