@@ -32,3 +32,4 @@ Technology.create(name: "Grains de Kopi Luwak", description: "Ce café extrêmem
 Technology.create(name: "Papier cadeau", description: "Permet de camoufler votre boîte en carton en cadeau. Effet Cheval de Troie garanti !", costMoney: 10000, costEnergy: 5, typeTech: "vaisseau")
 Technology.create(name: "Porte-bagages atomique", description: "Permet de ranger vos courses sur votre gyropode.", costMoney: 5000, costEnergy: 8000, typeTech: "vaisseau")
 Technology.create(name: "Kit carosserie", description: "Avec ça, vous serez la fierté du bled", costMoney: 10000, costEnergy: 26000, typeTech: "vaisseau")
+Technology.create(name: "Poney de trait", description: "Ce poney tirera fièrement votre aéronef vers Celestria s'il le doit. Il vous fera économiser bien de l'énergie.", costMoney: 100000, costEnergy: 1000000, typeTech: "vaisseau")

@@ -28,8 +28,12 @@
                 <div class="card-block text-center">
                     <h4 class="card-title"><%= t.name%></h4>
                     <p class="card-text"><%= t.description %></p>
-                    <button type="button" class="btn btn-primary">Buy with <%= t.costEnergy %> metal</button>
-                    <button type="button" class="btn btn-danger">Buy with <%= t.costMoney %> money</button>
+                    <% unless @actual_user.technologies.include? t %>
+                    <button type="button" class="btn btn-primary" onclick="clickModal(<%= t.id %>, '<%= t.name %>', <%= t.costEnergy %>, 0)" data-toggle="modal" data-target="#mymodal">Acheter avec <%= t.costEnergy %> d'energie</button>
+                    <button type="button" class="btn btn-danger" onclick="clickModal(<%= t.id %>, '<%= t.name %>', <%= t.costEnergy %>, 1)" data-toggle="modal" data-target="#mymodal">Acheter avec <%= t.costMoney %> monnaie galactique</button>
+                    <% else %>
+                    <h5>Technologie acquise !</h5>
+                    <% end %>
                 </div>
             </div>
         <% end %>
@@ -44,8 +48,12 @@
                 <div class="card-block text-center">
                     <h4 class="card-title"><%= t.name%></h4>
                     <p class="card-text"><%= t.description %></p>
-                    <button type="button" class="btn btn-primary">Buy with <%= t.costEnergy %> metal</button>
-                    <button type="button" class="btn btn-danger">Buy with <%= t.costMoney %> money</button>
+                    <% unless @actual_user.technologies.include? t %>
+                    <button type="button" class="btn btn-primary" onclick="clickModal(<%= t.id %>, '<%= t.name %>', <%= t.costEnergy %>, 0)" data-toggle="modal" data-target="#mymodal">Acheter avec <%= t.costEnergy %> d'energie</button>
+                    <button type="button" class="btn btn-danger" onclick="clickModal(<%= t.id %>, '<%= t.name %>', <%= t.costEnergy %>, 1)" data-toggle="modal" data-target="#mymodal">Acheter avec <%= t.costMoney %> monnaie galactique</button>
+                    <% else %>
+                    <h5>Technologie acquise !</h5>
+                    <% end %>
                 </div>
             </div>
         <% end %>
@@ -60,8 +68,12 @@
                 <div class="card-block text-center">
                     <h4 class="card-title"><%= t.name%></h4>
                     <p class="card-text"><%= t.description %></p>
-                    <button type="button" class="btn btn-primary">Buy with <%= t.costEnergy %> metal</button>
-                    <button type="button" class="btn btn-danger">Buy with <%= t.costMoney %> money</button>
+                    <% unless @actual_user.technologies.include? t %>
+                    <button type="button" class="btn btn-primary" onclick="clickModal(<%= t.id %>, '<%= t.name %>', <%= t.costEnergy %>, 0)" data-toggle="modal" data-target="#mymodal">Acheter avec <%= t.costEnergy %> d'energie</button>
+                    <button type="button" class="btn btn-danger" onclick="clickModal(<%= t.id %>, '<%= t.name %>', <%= t.costEnergy %>, 1)" data-toggle="modal" data-target="#mymodal">Acheter avec <%= t.costMoney %> monnaie galactique</button>
+                    <% else %>
+                    <h5>Technologie acquise !</h5>
+                    <% end %>
                 </div>
             </div>
         <% end %>
@@ -76,12 +88,40 @@
                 <div class="card-block text-center">
                     <h4 class="card-title"><%= t.name%></h4>
                     <p class="card-text"><%= t.description %></p>
-                    <button type="button" class="btn btn-primary">Buy with <%= t.costEnergy %> metal</button>
-                    <button type="button" class="btn btn-danger">Buy with <%= t.costMoney %> money</button>
+                    <% unless @actual_user.technologies.include? t %>
+                    <button type="button" class="btn btn-primary" onclick="clickModal(<%= t.id %>, '<%= t.name %>', <%= t.costEnergy %>, 0)" data-toggle="modal" data-target="#mymodal">Acheter avec <%= t.costEnergy %> d'energie</button>
+                    <button type="button" class="btn btn-danger" onclick="clickModal(<%= t.id %>, '<%= t.name %>', <%= t.costEnergy %>, 1)" data-toggle="modal" data-target="#mymodal">Acheter avec <%= t.costMoney %> monnaie galactique</button>
+                    <% else %>
+                    <h5>Technologie acquise !</h5>
+                    <% end %>
                 </div>
             </div>
         <% end %>
     </div>
+
+    <%= form_tag("/laboratory/buy", method: "post") do %>
+        <%= hidden_field_tag 'tech_id' %>
+        <%= hidden_field_tag 'buy_method' %>
+        <div class="modal fade" id="mymodal">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title"><span id="productTitle"></span></h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Etes-vous sûr de vouloir acheter ce produit pour <span id="priceSpan"></span>?</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary"> Payer </button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+                </div>
+            </div>
+        </div>
+    <% end %>
+
 </div>
 
 <script>
@@ -106,23 +146,36 @@
 
     function showDA(){
         hideAll();
-        $("#batLink").removeClass("active")
+        $("#batLink").removeClass("active");
         $("#DALink").addClass("active");
         $("#daTech").css("display", "block");
     }
 
     function showDP(){
         hideAll();
-        $("#batLink").removeClass("active")
+        $("#batLink").removeClass("active");
         $("#DPLink").addClass("active");
         $("#dpTech").css("display", "block");
     }
 
     function showShip(){
         hideAll(); 
-        $("#batLink").removeClass("active")
+        $("#batLink").removeClass("active");
         $("#ShipLink").addClass("active");
         $("#shipTech").css("display", "block");
     }
+
+    function clickModal(id, name, price, buyMethod){
+        console.log(name);
+        selectedID = id;
+        selectedName = name;
+        selectedCost = price;
+        $("#productTitle").html(selectedName);
+        $("#priceSpan").html(selectedCost);
+        $("#tech_id").attr('value', id);
+        $("#buy_method").attr('value', buyMethod);
+    }
+
+
 </script>
 
