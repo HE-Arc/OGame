@@ -1,8 +1,8 @@
 class LaboratoryController < ApplicationController
-  before_action :authorize, :get_user, :checklabo, :checkspatioport
+  before_action :authorize, :get_user, :checklabo, :checkspatioport, :checkministere
   
   def index
-    if @hasLabo then
+    unless @hasLabo then
       redirect_to user_path(@actual_user)
     end
   end

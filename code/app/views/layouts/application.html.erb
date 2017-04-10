@@ -30,6 +30,11 @@
                 <a class="nav-link" href="<%= url_for(controller: 'spatioport', action: 'index') %>">Spatioporc</a>
               </li>
               <% end %>
+              <% if @hasMinistere %>
+              <li class="nav-item active">
+                <a class="nav-link" href="<%= url_for(controller: 'ministere', action: 'index') %>">Ministère de la défense</a>
+              </li>
+              <% end %>
             </ul>
             <span class="navbar-text">
               <img src="<%= image_path('metal-bar.png') %>" width="16" height="16"/>

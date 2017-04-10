@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  get 'ministere/index'
+
+  get 'ministere/buy'
+
   get 'spatioport/index'
 
   get 'spatioport/buy'
@@ -33,6 +37,16 @@ Rails.application.routes.draw do
   controller :planets do
     get 'planet' => :planet
   end
+
+  controller :spatioport do
+    get 'spatioport' => :index
+    get 'spatioport/:id' => :show
+  end
+
+  controller :ministere do
+    get 'ministere' => :index
+    get 'ministere/:id' => :show
+  end 
 
   root 'home#index'
 

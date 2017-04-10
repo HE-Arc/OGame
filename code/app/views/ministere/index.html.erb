@@ -1,11 +1,11 @@
 <div class="jumbotron">
-    <h1 class="text-center">Spatioporc</h1>
-    <p class="text-center">Vous pouvez selectionner ici la planete sur laquelle vous voulez construire des vaisseaux<p>
+    <h1 class="text-center">Ministere de la defense</h1>
+    <p class="text-center">Vous pouvez selectionner ici la planete sur laquelle vous voulez construire des defenses<p>
     <div class="container">
         <div class="row">
             <div class="btn-group-vertical col-3" role="group">
                 <% @actual_user.planets.each do |p|%>
-                <a class="btn btn-secondary" href="<%= url_for(controller: 'spatioport', action: 'show', id: p.id)%>"><%= p.name %></a>
+                <a class="btn btn-secondary" href="<%= url_for(controller: 'ministere', action: 'show', id: p.id)%>"><%= p.name %></a>
                 <%end%>
             </div>
 

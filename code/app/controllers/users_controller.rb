@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
   skip_before_action :authorize, only: [:new, :create, :index]
-  skip_before_action :checklabo, :checkspatioport
+  skip_before_action :checklabo, :checkspatioport, :checkministere
   # GET /users
   # GET /users.json
   def index

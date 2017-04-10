@@ -1,4 +1,4 @@
-class SpatioportController < ApplicationController
+class MinistereController < ApplicationController
   def index
   end
 

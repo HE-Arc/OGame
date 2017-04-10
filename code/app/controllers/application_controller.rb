@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
-  before_action :authorize, :get_user, :checklabo, :checkspatioport
+  before_action :authorize, :get_user, :checklabo, :checkspatioport, :checkministere
 
   protected
   def authorize
@@ -24,10 +24,18 @@ class ApplicationController < ActionController::Base
 
   def checkspatioport
     @hasSpatio = false
-    @bite = "Chatee"
     @actual_user.planets.each do |p|
       if p.buildings.where(name: "Spatioporc") then
         @hasSpatio = true
+      end
+    end
+  end
+
+  def checkministere
+    @hasMinistere = false
+    @actual_user.planets.each do |p|
+      if p.buildings.where(name: "Ministère de la défense") then
+        @hasMinistere = true
       end
     end
   end

@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
-  skip_before_action :authorize, :checklabo, :checkspatioport
+  skip_before_action :authorize, :checklabo, :checkspatioport, :checkministere
   def new
   end
 

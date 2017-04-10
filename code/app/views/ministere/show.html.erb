@@ -1,0 +1,39 @@
+<div class="jumbotron">
+    <h1 class="text-center">Ministere de la défense de la planete <%= @selected_planet.name %></h1>
+    <p class="text-center">Construisez ici les defenses de votre planete !<p>
+    <div class="container">
+        <div class="row">
+            <div class="btn-group-vertical col-3" role="group">
+                <% @actual_user.planets.each do |p|%>
+                <a class="btn btn-secondary" href="<%= url_for(controller: 'ministere', action: 'show', id: p.id)%>"><%= p.name %></a>
+                <%end%>
+            </div>
+
+            <div class="card-group-vertical col-9" id="load">
+                <% Defense.all.each do |s|%>
+                <div class="card text-center">
+                    <div class="card-header">
+                        <h1><%= s.name%></h1>
+                    </div>
+                    <div class="card-block">
+                        <p><%= s.description%></p>
+                        <% if @actual_user.metal >= s.costMetal %>
+                            <button type="button" class="btn btn-primary" >Acheter avec <%= s.costMetal %> d'energie</button>
+                        <% else %>
+                            <h5 class="text-danger">Il vous manque <%= s.costMetal - @actual_user.metal %> metal afin d'acquérir cette technologie</h5>
+                        <%end%>
+                        <% if @actual_user.money >= s.costMoney %>
+                            <button type="button" class="btn btn-danger">Acheter avec <%= s.costMoney %> monnaie galactique</button>
+                        <% else %>
+                            <h5 class="text-danger">Il vous manque <%= s.costMoney - @actual_user.money %> metal afin d'acquérir cette technologie</h5>
+                        <%end%>
+                    </div>
+                    <div class="card-footer text-muted">
+                        <p>Vous en avez sur cette planete</p>
+                    </div>
+                </div>
+                <%end%>
+            </div>
+        </div>
+    </div>
+</div>

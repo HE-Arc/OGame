@@ -1,6 +1,6 @@
 class PlanetController < ApplicationController
-  before_action :checklabo, :checkspatioport
-  
+  before_action :checklabo, :checkspatioport, :checkministere
+
   def index
     @solarsystems = Solarsystem.all
   end
