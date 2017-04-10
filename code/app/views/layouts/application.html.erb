@@ -25,9 +25,11 @@
                   <a class="nav-link" href="<%= url_for(controller: 'laboratory', action: 'index') %>">Laboratory</a>
                 </li>
               <% end %>
+              <% if @hasSpatio %>
               <li class="nav-item active">
-                <a class="nav-link" href="">Shop</a>
+                <a class="nav-link" href="">Spatioporc</a>
               </li>
+              <% end %>
             </ul>
             <span class="navbar-text">
               <img src="<%= image_path('metal-bar.png') %>" width="16" height="16"/>
@@ -44,7 +46,7 @@
                 <a class="navbar-text dropdown-toggle" href="/" id="user_dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><%= @actual_user.name %></a>
                 <div class="dropdown-menu" aria-labelledby="user_dropdown">
                   <a class="dropdown-item" href="<%= user_path(@actual_user) %>">Profile</a>
-                  <a class="dropdown-item" href="#">Logout</a>
+                  <a class="dropdown-item" href="<%= url_for(controller: 'sessions', action: 'destroy') %>">Logout</a>
                 </div>
               </li>
             <% else %>

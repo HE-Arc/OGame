@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
-  before_action :authorize, :get_user, :checklabo
+  before_action :authorize, :get_user, :checklabo, :checkspatioport
 
   protected
   def authorize
@@ -21,4 +21,14 @@ class ApplicationController < ActionController::Base
       end
     end
   end
+
+  def checkspatioport
+    @hasSpatio = false
+    @actual_user.planets.each do |p|
+      if p.buildings.include? Building.where(name: "Spatioporc") then
+        @hasSpatio = true
+      end
+    end
+  end
+
 end
