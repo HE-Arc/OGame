@@ -1,0 +1,16 @@
+<div class="jumbotron">
+    <div class="card card-outline-primary mb-3 text-center">
+        <div class="card-block text-center">
+            <h4 class="card-title">Nom</h4>
+        <strong>My planets:</strong>
+        <ul>
+            <% @actual_user.planets.each do |p| %>
+                <% p.buildings.each do |b|%>
+                <li><b><%= b.name %></b></li>
+                <%end%>
+            <% end %>
+            <li><%= @bite%>
+        </ul>
+        </div>
+    </div>
+</div>

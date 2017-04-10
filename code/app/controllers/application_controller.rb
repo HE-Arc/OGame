@@ -16,7 +16,7 @@ class ApplicationController < ActionController::Base
   def checklabo
     @hasLabo = false
     @actual_user.planets.each do |p|
-      if p.buildings.include? Building.where(name: "Laboratoire de Dexter") then
+      if p.buildings.where(name: "Laboratoire de Dexter") then
         @hasLabo = true
       end
     end
@@ -24,8 +24,9 @@ class ApplicationController < ActionController::Base
 
   def checkspatioport
     @hasSpatio = false
+    @bite = "Chatee"
     @actual_user.planets.each do |p|
-      if p.buildings.include? Building.where(name: "Spatioporc") then
+      if p.buildings.where(name: "Spatioporc") then
         @hasSpatio = true
       end
     end

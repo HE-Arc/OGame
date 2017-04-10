@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  get 'spatioport/index'
+
+  get 'spatioport/buy'
+
   get 'laboratory' => 'laboratory#index'
   post 'laboratory/buy' => 'laboratory#buy'
 
