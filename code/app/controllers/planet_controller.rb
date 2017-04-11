@@ -16,5 +16,6 @@ class PlanetController < ApplicationController
     @selected_planet = Planet.find params[:planet]
     @building = Building.find params[:building]
     @selected_planet.construct(@building)
+    redirect_to :back
   end
 end

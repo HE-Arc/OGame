@@ -22,7 +22,7 @@ Rails.application.routes.draw do
   get 'planets' => 'planet#index'
   get 'planets/:id' => 'planet#show'
 
-  post 'buyBuilding' => 'planet#buyBuilding'
+  
 
   controller :sessions do
     get 'login' => :new
@@ -36,6 +36,7 @@ Rails.application.routes.draw do
 
   controller :planets do
     get 'planet' => :planet
+    get 'planet/buyBuilding' => 'planet#buyBuilding'
   end
 
   controller :spatioport do
