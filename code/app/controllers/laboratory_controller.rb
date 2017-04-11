@@ -1,5 +1,5 @@
 class LaboratoryController < ApplicationController
-  before_action :authorize, :get_user, :checklabo, :checkspatioport, :checkministere
+  before_action :authorize, :get_user, :checklabo?, :checkspatioport?, :checkministere?
   
   def index
     unless @hasLabo then

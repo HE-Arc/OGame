@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
-  before_action :authorize, :get_user, :checklabo, :checkspatioport, :checkministere
+  before_action :authorize, :get_user, :checklabo?, :checkspatioport?, :checkministere?
 
   protected
   def authorize
@@ -13,7 +13,7 @@ class ApplicationController < ActionController::Base
     @actual_user = User.find(session[:user_id]) unless session[:user_id].blank?
   end
 
-  def checklabo
+  def checklabo?
     @hasLabo = false
     @actual_user.planets.each do |p|
       if p.buildings.where(name: "Laboratoire de Dexter").take then
@@ -22,7 +22,7 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def checkspatioport
+  def checkspatioport?
     @hasSpatio = false
     @actual_user.planets.each do |p|
       if p.buildings.where(name: "Spatioporc").take then
@@ -31,7 +31,7 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def checkministere
+  def checkministere?
     @hasMinistere = false
     @actual_user.planets.each do |p|
       if p.buildings.where(name: "Ministère de la défense").take then

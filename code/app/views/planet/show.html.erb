@@ -2,10 +2,18 @@
     <h1><%= @selected_planet.name %></h1>
   <p> position : <%= @selected_planet.position_x %>:<%= @selected_planet.position_y %>:<%= @selected_planet.position_z %></p>
   <p> range : <%= @range[1] %> parsec and <%= @range[0] %> units</p>
-  <p> slots : <%= @selected_planet.buildings.count %>/<%= @selected_planet.nb_cases %></p>
+  <p> slots : <%= @selected_planet.getCaseprise %>/<%= @selected_planet.nb_cases %></p>
+  <h2>Batîment </h2>
   <ul>
     <% @selected_planet.buildings.each do |b| %>
       <li><%= b.name %> </li>
+    <% end %>
+  </ul>
+
+  <h2>Défense de la planete</h2>
+  <ul>
+    <% @selected_planet.defenses.each do |c| %>
+      <li><%= c.name %> </li>
     <% end %>
   </ul>
     <% if @selected_planet.user == @actual_user  %>
