@@ -6,7 +6,7 @@
         <div class="row">
             <div class="btn-group-vertical col-3" role="group">
                 <% @actual_user.planets.each do |p|%>
-                <a class="btn btn-secondary" href="<%= url_for(method: post, controller: 'ministere', action: 'show', id: p.id)%>"><%= p.name %></a>
+                <a class="btn btn-secondary" href="<%= url_for(controller: 'ministere', action: 'show', id: p.id)%>"><%= p.name %></a>
                 <%end%>
             </div>
 
