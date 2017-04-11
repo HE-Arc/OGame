@@ -16,8 +16,7 @@ class ApplicationController < ActionController::Base
   def checklabo
     @hasLabo = false
     @actual_user.planets.each do |p|
-      nb_labo = p.buildings.where(name: "Laboratoire de Dexter").count
-      if nb_labo >= 1 then
+      if p.buildings.where(name: "Laboratoire de Dexter").take then
         @hasLabo = true
       end
     end
@@ -26,8 +25,7 @@ class ApplicationController < ActionController::Base
   def checkspatioport
     @hasSpatio = false
     @actual_user.planets.each do |p|
-      nb_spatioport = p.buildings.where(name: "Spatioporc").count
-      if nb_spatioport >= 1 then
+      if p.buildings.where(name: "Spatioporc").take then
         @hasSpatio = true
       end
     end
@@ -36,8 +34,7 @@ class ApplicationController < ActionController::Base
   def checkministere
     @hasMinistere = false
     @actual_user.planets.each do |p|
-      nb_ministere = p.buildings.where(name: "Ministère de la défense").count
-      if nb_ministere >= 1 then
+      if p.buildings.where(name: "Ministère de la défense").take then
         @hasMinistere = true
       end
     end

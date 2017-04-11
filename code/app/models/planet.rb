@@ -1,7 +1,7 @@
 class Planet < ApplicationRecord
   has_and_belongs_to_many :buildings
-  has_many :defenses
-  has_many :spaceships
+  has_and_belongs_to_many :defenses
+  has_and_belongs_to_many :spaceships
   belongs_to :user, optional: true
   belongs_to :solarsystem
 

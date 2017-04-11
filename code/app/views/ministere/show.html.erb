@@ -29,7 +29,7 @@
                         <%end%>
                     </div>
                     <div class="card-footer text-muted">
-                        <p>Vous en avez sur cette planete</p>
+                        <p>Vous avez <%= @def.where(name: s.name).count %> "<%= s.name%>" sur cette planete</p>
                     </div>
                 </div>
                 <%end%>

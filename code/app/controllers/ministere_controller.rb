@@ -4,6 +4,7 @@ class MinistereController < ApplicationController
 
   def show
     @selected_planet = Planet.find params[:id]
+    @def = @selected_planet.defenses
     if @selected_planet.user.nil? || @selected_planet.user != @actual_user then
       redirect_to action: "index"
     end

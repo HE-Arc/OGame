@@ -41,6 +41,7 @@ Rails.application.routes.draw do
   controller :spatioport do
     get 'spatioport' => :index
     get 'spatioport/:id' => :show
+    post 'spatioport/buy' => :buy
   end
 
   controller :ministere do
