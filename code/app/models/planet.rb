@@ -24,10 +24,16 @@ class Planet < ApplicationRecord
   end
 
   def construct(building)
-    if(self.buildings.count < self.nb_cases)
+    if(self.getCaseprise < self.nb_cases)
       self.buildings.push(building)
       return true
     end
     return false
   end
+
+  def getCaseprise()
+    caseprise = self.buildings.count + self.defenses.count
+    return caseprise
+  end
+
 end

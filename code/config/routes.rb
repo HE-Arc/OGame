@@ -47,6 +47,7 @@ Rails.application.routes.draw do
   controller :ministere do
     get 'ministere' => :index
     get 'ministere/:id' => :show
+    post 'ministere/buy' => :buy
   end 
 
   root 'home#index'
