@@ -11,6 +11,9 @@ class UsersController < ApplicationController
   # GET /users/1z
   # GET /users/1.json
   def show
+    self.checklabo
+    self.checkspatioport
+    self.checkministere
   end
 
   # GET /users/new
