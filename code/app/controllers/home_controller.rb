@@ -1,5 +1,5 @@
 class HomeController < ApplicationController
-  skip_before_action :authorize
+  skip_before_action :authorize, :checklabo?, :checkspatioport?, :checkministere?
 
   def index
       @variable = 4

@@ -1,5 +1,10 @@
 class LaboratoryController < ApplicationController
+  before_action :authorize, :get_user, :checklabo?, :checkspatioport?, :checkministere?
+  
   def index
+    unless @hasLabo then
+      redirect_to user_path(@actual_user)
+    end
   end
 
   def buy

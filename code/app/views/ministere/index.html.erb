@@ -1,0 +1,16 @@
+<div class="jumbotron">
+    <h1 class="text-center">Ministere de la defense</h1>
+    <p class="text-center">Vous pouvez selectionner ici la planete sur laquelle vous voulez construire des defenses<p>
+    <div class="container">
+        <div class="row">
+            <div class="btn-group-vertical col-3" role="group">
+                <% @actual_user.planets.each do |p|%>
+                <a class="btn btn-secondary" href="<%= url_for(controller: 'ministere', action: 'show', id: p.id)%>"><%= p.name %></a>
+                <%end%>
+            </div>
+
+            <div class="card-group-vertical col-9">
+            </div>
+        </div>
+    </div>
+</div>

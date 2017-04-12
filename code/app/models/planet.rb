@@ -1,7 +1,7 @@
 class Planet < ApplicationRecord
   has_and_belongs_to_many :buildings
-  has_many :defenses
-  has_many :spaceships
+  has_and_belongs_to_many :defenses
+  has_and_belongs_to_many :spaceships
   belongs_to :user, optional: true
   belongs_to :solarsystem
 
@@ -23,20 +23,18 @@ class Planet < ApplicationRecord
     self.buildings
   end
 
-  def construct(building, user, devise)
-    if(self.buildings.count < self.nb_cases)
-      if(devise == "metal")
-        if(user.metal >= building.costMetal)
-          user.metal -= building.costMetal
-          self.buildings.push(building)
-        end
-      elsif(devise == "money")
-        if(user.money >= building.costMoney)
-          user.money -= building.costMoney
-          self.buildings.push(building)
-        end
-      end
+
+  def construct(building)
+    if(self.getCaseprise < self.nb_cases)
+      self.buildings.push(building)
+      return true
     end
     user.save
   end
+
+  def getCaseprise()
+    caseprise = self.buildings.count + self.defenses.count
+    return caseprise
+  end
+
 end

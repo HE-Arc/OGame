@@ -1,4 +1,6 @@
 class PlanetController < ApplicationController
+  before_action :checklabo?, :checkspatioport?, :checkministere?
+
   def index
     @solarsystems = Solarsystem.all
   end
@@ -11,11 +13,10 @@ class PlanetController < ApplicationController
   end
 
   def buyBuilding
-    selected_planet = Planet.find params[:planet]
-    building = Building.find params[:building]
-    devise = params[:devise]
-    selected_planet.construct(building, @actual_user, devise)
 
+    @selected_planet = Planet.find params[:planet]
+    @building = Building.find params[:building]
+    @selected_planet.construct(@building)
     redirect_to :back
   end
 end

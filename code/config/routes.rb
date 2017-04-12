@@ -1,5 +1,13 @@
 Rails.application.routes.draw do
 
+  get 'ministere/index'
+
+  get 'ministere/buy'
+
+  get 'spatioport/index'
+
+  get 'spatioport/buy'
+
   get 'laboratory' => 'laboratory#index'
   post 'laboratory/buy' => 'laboratory#buy'
 
@@ -14,7 +22,7 @@ Rails.application.routes.draw do
   get 'planets' => 'planet#index'
   get 'planets/:id' => 'planet#show'
 
-  post 'buyBuilding' => 'planet#buyBuilding'
+  
 
   controller :sessions do
     get 'login' => :new
@@ -28,7 +36,20 @@ Rails.application.routes.draw do
 
   controller :planets do
     get 'planet' => :planet
+    get 'planet/buyBuilding' => 'planet#buyBuilding'
   end
+
+  controller :spatioport do
+    get 'spatioport' => :index
+    get 'spatioport/:id' => :show
+    post 'spatioport/buy' => :buy
+  end
+
+  controller :ministere do
+    get 'ministere' => :index
+    get 'ministere/:id' => :show
+    post 'ministere/buy' => :buy
+  end 
 
   root 'home#index'
 

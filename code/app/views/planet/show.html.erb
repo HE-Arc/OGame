@@ -1,28 +1,69 @@
 <div class="jumbotron">
-    <h1><%= @selected_planet.name %></h1>
-  <p> position : <%= @selected_planet.position_x %>:<%= @selected_planet.position_y %>:<%= @selected_planet.position_z %></p>
-  <p> range : <%= @range[1] %> parsec and <%= @range[0] %> units</p>
-  <p> slots : <%= @selected_planet.buildings.count %>/<%= @selected_planet.nb_cases %></p>
-  <ul>
-    <% @selected_planet.buildings.each do |b| %>
-      <li><%= b.name %> </li>
-    <% end %>
-  </ul>
-    <% if @selected_planet.user == @actual_user  %>
-      <% if @selected_planet.nb_cases-@selected_planet.buildings.count > 0 %>
-        <% @buildings.each do |b| %>
-              <p><%= b.name %>
-                <%= button_to b.costMoney, {action: "buyBuilding", building: b.id, planet: @selected_planet.id, devise:"money"} %>
-                <%= button_to b.costMetal, {action: "buyBuilding", building: b.id, planet: @selected_planet.id, devise:"metal"} %>
-              </p>
-        <% end %>
-      <% else %>
-        <p>Planète pleine</p>
-      <% end %>
 
-    <% elsif @selected_planet.user.nil? %>
-      <p>This planet is not colonized... yet !</p>
-    <% else %>
-      <p>Owner: <%= @selected_planet.user.name %> </p>
-    <% end %>
+    <h1>Planete: <%= @selected_planet.name %></h1>
+
+    <div class="row">
+      <div class="col-6">
+        <h2>Bâtiment</h2>
+        <ul class="list-group">
+          <% Building.all.each do |c| %>
+            <li class="list-group-item justify-content-between">
+              <%= c.name %>
+              <span class="badge badge-default badge-pill"><%= @selected_planet.buildings.where(name: c.name).count%></span>
+            </li>
+          <% end %>
+        </ul>
+        </br>
+        <h2>Défense</h2>
+        <ul class="list-group">
+          <% Defense.all.each do |c| %>
+            <li class="list-group-item justify-content-between">
+              <%= c.name %>
+              <span class="badge badge-default badge-pill"><%= @selected_planet.defenses.where(name: c.name).count%></span>
+            </li>
+          <% end %>
+        </ul>
+        </br>
+        <h2>Vaisseau</h2>
+        <ul class="list-group">
+          <% Spaceship.all.each do |c| %>
+            <li class="list-group-item justify-content-between">
+              <%= c.name %>
+              <span class="badge badge-default badge-pill"><%= @selected_planet.spaceships.where(name: c.name).count%></span>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+
+      <div class="btn-group-vertical col-6" role="group">
+        <h2>Information sur la planète</h2>
+        <p> Position : <%= @selected_planet.position_x %>:<%= @selected_planet.position_y %>:<%= @selected_planet.position_z %></p>
+        <p> Range : <%= @range[1] %> parsec and <%= @range[0] %> units</p>
+        <p> Slots : <%= @selected_planet.getCaseprise %>/<%= @selected_planet.nb_cases %></p>
+        <p> Owner:
+          <% unless @selected_planet.user.nil? %>
+              <%= @selected_planet.user.name %>
+          <% else %>
+              Free planet
+          <% end %>
+
+           </p>
+      <% if @selected_planet.user == @actual_user  %>
+          <% if @selected_planet.nb_cases-@selected_planet.getCaseprise > 0 %>
+            <h2>Achat de batiment</h2>
+            <% @buildings.each do |b| %>
+                  <strong><%= b.name%><strong>
+                  <a class="btn btn-primary text-center" href="<%= url_for(controller: 'planet', action: 'buyBuilding', building: b.id, planet: @selected_planet.id)%>"><%= b.costMetal %> de metal</a>
+            <% end %>
+          <% else %>
+            <h2>Information sur l'état de la planète</h2>
+            <p>Aucun slot de disponible pour la construction de nouveaux batiment</p>
+          <% end %>
+        <% elsif @selected_planet.user.nil? %>
+          <h2>Information</h2>
+          <p>Cette planète n'est pas colonisé ... encore' !</p>
+        <% end %>
+        </br>
+      </div>
+    </div>
 </div>
