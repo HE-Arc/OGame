@@ -38,6 +38,8 @@ gem 'sprockets-rails', :require => 'sprockets/railtie'
 # Bootstrap 4
 gem 'bootstrap', '~> 4.0.0.alpha6'
 
+gem 'whenever'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
