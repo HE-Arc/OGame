@@ -25,11 +25,14 @@ class Planet < ApplicationRecord
 
 
   def construct(building)
-    if(self.getCaseprise < self.nb_cases)
-      self.buildings.push(building)
-      return true
+    if(self.getCaseprise < self.nb_cases) then
+      if(self.user.metal >= building.costMetal) then
+        self.buildings.push(building)
+        self.user.metal -= building.costMetal
+        self.user.save
+        return true
+      end
     end
-    user.save
   end
 
   def getCaseprise()

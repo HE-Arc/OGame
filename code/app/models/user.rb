@@ -7,9 +7,16 @@ class User < ApplicationRecord
 
   def self.update_ressources()
     User.all.each do |u|
-      u.buildings.each do |b|
-        u.metal += b.metalFarmPerMinute
-        u.energy += b.energyFarmPerMinute
+      u.planets.each do |p|
+        p.buildings.each do |b|
+          if b.metalFarmPerMinute != nil then
+            u.metal += b.metalFarmPerMinute
+          end
+
+          if b.energyFarmPerMinute != nil then
+            u.energy += b.energyFarmPerMinute
+          end
+        end
       end
       u.save
     end
