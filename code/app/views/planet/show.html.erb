@@ -42,7 +42,7 @@
         <p> Slots : <%= @selected_planet.getCaseprise %>/<%= @selected_planet.nb_cases %></p>
         <p> Owner:
           <% unless @selected_planet.user.nil? %>
-              <%= @selected_planet.user.name %>
+              <a href="<%= url_for(controller: :users, action: :show, id: @selected_planet.user.id) %>"><%= @selected_planet.user.name %></a>
           <% else %>
               Free planet
           <% end %>
@@ -52,7 +52,6 @@
           <% if @selected_planet.nb_cases-@selected_planet.getCaseprise > 0 %>
             <h2>Achat de batiment</h2>
             <% @buildings.each do |b| %>
-
               <strong><%= b.name%></strong>
               <%if b.costMetal <= @actual_user.metal%>
                   <a class="btn btn-primary text-center" href="<%= url_for(controller: 'planet', action: 'buyBuilding', building: b.id, planet: @selected_planet.id)%>"><%= b.costMetal %> de metal</a>

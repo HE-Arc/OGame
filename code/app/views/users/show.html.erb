@@ -1,18 +1,22 @@
 <div class="jumbotron">
+<h1>Profile de <%= @user.name%></h1>
   <p>
-    <strong>Name:</strong>
-    <%= @user.name %>
-  </p>
-  <p>
-      <strong>My planets:</strong>
-      <ul>
+      <h2>Planète(s) acquise(s):</h2>
+      <ul class="list-group">
         <% @user.planets.each do |p| %>
-          <% if p.id == @user.planet_id %>
-            <li><b><%= p.name %></b></li>
-          <% else %>
-            <li><%= p.name %></li>
-          <% end %>
+            <li class="list-group-item list-group-item-action"><a href="<%= url_for(controller: 'planet', action: 'show', id: p.id) %>"><%= p.name %></a></li>
         <% end %>
       </ul>
+      <br/>
+      <h2>Technologie(s) acquise(s)</h2>
+      <% unless @user.technologies.empty?%>
+      <ul class="list-group">
+        <% @user.technologies.each do |t|%>
+        <li class="list-group-item list-group-item-action"><%= t.name%></li>
+        <%end%>
+      </ul>
+      <%else%>
+      <p>Ne maitrise aucune technologie</p>
+      <%end%>
   </p>
 </div>
