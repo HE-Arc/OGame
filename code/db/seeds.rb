@@ -18,7 +18,7 @@ Defense.create(name: "Machine à café plasma", description: "Cette machine à c
 #Création vaisseau
 Spaceship.create(name: "Boîte en carton", description: "Cette magnifique boîte en carton à déjà servi à contenir des choses, mais elle fera très bien l'affaire comme vaisseau.", costMoney: 20, costMetal: 10, energyTank: 500, attackPoints: 1)
 Spaceship.create(name: "Gyropode volant", description: "Ce bijou de technologie vous permet de vous déplacer librement dans l'espace", costMoney: 200, costMetal: 300, energyTank: 1200, attackPoints: 10)
-Spaceship.create(name: "DeLorean d'occasion", description: "Cette voiture au look rétro puise son énergie dans les déchets de notre planète, ce qui en fait l'engin le plus écolo de la galaxie, mais aussi le plus puissant avec ses 2.21 Gigowatts.", costMoney: 75000, costMetal: 100000, energyTank: 5000, attackPoints: 75)
+Spaceship.create(name: "DeLorean", description: "Cette voiture au look rétro puise son énergie dans les déchets de notre planète, ce qui en fait l'engin le plus écolo de la galaxie, mais aussi le plus puissant avec ses 2.21 Gigowatts.", costMoney: 75000, costMetal: 100000, energyTank: 5000, attackPoints: 75)
 
 #Création technologies
 Technology.create(name: "Perceuse", description: "Améliore grandement le forage", costMoney: 1000, costEnergy: 1000, typeTech: "bâtiment")
