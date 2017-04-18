@@ -52,17 +52,40 @@ class PlanetController < ApplicationController
     defenseActivePower = 0
     defensePassivePower = 0
     attackedPlanet.defenses.each do |d|
-      if(d.isactive) then
-        defenseActivePower += d.points
+      if d.isactive then
+        if d.name == "Lance-fourchette" && (attackingPlanet.user.technologies.include? Technology.where(name: "Fourchette à 5 dents").take) then
+            defenseActivePower += d.points*2
+        elsif d.name == "Canon à poulet ioniques"  && (attackingPlanet.user.technologies.include? Technology.where(name: "Modification génétique des poulets").take) then
+            defenseActivePower += d.points*3
+        elsif d.name == "Lance-boulanger"  && (attackingPlanet.user.technologies.include? Technology.where(name: "Chirurgie esthétique").take) then
+            defenseActivePower += d.points*4
+        else
+            defenseActivePower += d.points
+        end
       else
-        defensePassivePower += d.points
+        if d.name == "Bouclier en bois" && (attackingPlanet.user.technologies.include? Technology.where(name: "Peinture rose").take) then
+          defensePassivePower += d.points*2
+        elsif d.name == "Bouclier ionique bovin"  && (attackingPlanet.user.technologies.include? Technology.where(name: "Aspirateur à méthane").take) then
+          defensePassivePower += d.points*3
+        elsif d.name == "Machine à café plasma"  && (attackingPlanet.user.technologies.include? Technology.where(name: "Grains de Kopi Luwak").take) then
+          defensePassivePower += d.points*4
+        else
+          defensePassivePower += d.points
+        end
       end
-      defensePower += d.points
     end
 
     attackPower = 0
     flotte.each do |s|
-      attackPower += s.attackPoints
+      if s.name == "Boîte en carton" && (attackingPlanet.user.technologies.include? Technology.where(name: "Papier cadeau").take) then
+        attackPower += s.attackPoints*2
+      elsif s.name == "Gyropode volant"  && (attackingPlanet.user.technologies.include? Technology.where(name: "Porte-bagages atomique").take) then
+        attackPower += s.attackPoints*3
+      elsif s.name == "DeLorean d'occasion"  && (attackingPlanet.user.technologies.include? Technology.where(name: "Kit carosserie").take) then
+        attackPower += s.attackPoints*4
+      else
+        attackPower += s.attackPoints
+      end
     end
 
     if attackedPlanet.user.nil? then
