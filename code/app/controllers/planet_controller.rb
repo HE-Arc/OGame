@@ -30,7 +30,7 @@ class PlanetController < ApplicationController
       energy_needed = sdistance*10 + udistance*100
       suitable_spaceships = Array.new
       p.spaceships.each do |sp|
-        if sp.energyTank >= energy_needed then
+        if (((@actual_user.technologies.include? Technology.where(name: "Poney de trait").take) && (sp.energyTank*2 >= energy_needed)) || (sp.energyTank >= energy_needed)) then
           suitable_spaceships << sp
         end
       end
