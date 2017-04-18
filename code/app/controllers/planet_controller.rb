@@ -13,7 +13,6 @@ class PlanetController < ApplicationController
   end
 
   def buyBuilding
-
     @selected_planet = Planet.find params[:planet]
     @building = Building.find params[:building]
     @selected_planet.construct(@building)
