@@ -52,7 +52,8 @@
           <% if @selected_planet.nb_cases-@selected_planet.getCaseprise > 0 %>
             <h2>Achat de batiment</h2>
             <% @buildings.each do |b| %>
-              <strong><%= b.name%><strong>
+
+              <strong><%= b.name%></strong>
               <%if b.costMetal <= @actual_user.metal%>
                   <a class="btn btn-primary text-center" href="<%= url_for(controller: 'planet', action: 'buyBuilding', building: b.id, planet: @selected_planet.id)%>"><%= b.costMetal %> de metal</a>
               <%else%>

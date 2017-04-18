@@ -7,7 +7,6 @@ class Planet < ApplicationRecord
 
   def distanceto(planet)
 
-    #TODO fix distance if system changed
     ssvalue =  Math.sqrt((position_x-planet.position_x)**2+
            (position_y-planet.position_y)**2+
            (position_z-planet.position_z)**2)
@@ -24,13 +23,22 @@ class Planet < ApplicationRecord
   end
 
 
-  def construct(building)
+  def construct(building, buyMethod)
     if(self.getCaseprise < self.nb_cases) then
-      if(self.user.metal >= building.costMetal) then
-        self.buildings.push(building)
-        self.user.metal -= building.costMetal
-        self.user.save
-        return true
+      if(buyMethod == 0) then
+        if(self.user.metal >= building.costMetal) then
+          self.buildings.push(building)
+          self.user.metal -= building.costMetal
+          self.user.save
+          return true
+        elsif (buyMethod == 1) then
+          if(self.user.money >= building.costMoney) then
+            self.buildings.push(building)
+            self.user.money -= building.costMoney
+            self.user.save
+            return true
+          end
+        end
       end
     end
   end
@@ -38,6 +46,13 @@ class Planet < ApplicationRecord
   def getCaseprise()
     caseprise = self.buildings.count + self.defenses.count
     return caseprise
+  end
+
+  def conquer(attacker)
+      self.buildings = []
+      self.user = attacker
+      self.save
+
   end
 
 end
