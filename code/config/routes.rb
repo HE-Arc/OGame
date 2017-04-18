@@ -37,6 +37,7 @@ Rails.application.routes.draw do
   controller :planets do
     get 'planet' => :planet
     get 'planet/buyBuilding' => 'planet#buyBuilding'
+    get 'planet/attack' => 'planet#attack'
   end
 
   controller :spatioport do

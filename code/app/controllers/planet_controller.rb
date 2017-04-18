@@ -13,12 +13,32 @@ class PlanetController < ApplicationController
   end
 
   def buyBuilding
-
     @selected_planet = Planet.find params[:planet]
     building = Building.find params[:building]
     buyMethod = params[:buy_method].to_i
     @selected_planet.construct(building, buyMethod)
     redirect_to :back
+  end
+
+  def attack
+    @selected_planet = Planet.find params[:planet]
+
+    @suitable_spaceships_by_planet = Hash.new
+
+    @actual_user.planets.each do |p|
+      sdistance, udistance = p.distanceto(@selected_planet)
+      energy_needed = sdistance*10 + udistance*100
+      suitable_spaceships = Array.new
+      p.spaceships.each do |sp|
+        if sp.energyTank >= energy_needed then
+          suitable_spaceships << sp
+        end
+      end
+      unless suitable_spaceships.empty? then
+        @suitable_spaceships_by_planet[p] = suitable_spaceships
+      end
+    end
+
   end
 
 end
