@@ -18,4 +18,22 @@ class PlanetController < ApplicationController
     @selected_planet.construct(@building)
     redirect_to :back
   end
+
+  def attack
+    @selected_planet = Planet.find params[:planet]
+
+    @suitable_planets = Array.new
+
+    @actual_user.planets.each do |p|
+      sdistance, udistance = p.distanceto(@selected_planet)
+      energy_needed = sdistance*10 + udistance*100
+      p.spaceships.each do |sp|
+        if sp.energyTank >= energy_needed then
+          @suitable_planets << p
+          break
+        end
+      end
+    end
+
+  end
 end
