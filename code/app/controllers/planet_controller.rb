@@ -52,7 +52,7 @@ class PlanetController < ApplicationController
     defenseActivePower = 0
     defensePassivePower = 0
     attackedPlanet.defenses.each do |d|
-      if d.isactive then
+      if d.isActive then
         if d.name == "Lance-fourchette" && (attackingPlanet.user.technologies.include? Technology.where(name: "Fourchette à 5 dents").take) then
             defenseActivePower += d.points*2
         elsif d.name == "Canon à poulet ioniques"  && (attackingPlanet.user.technologies.include? Technology.where(name: "Modification génétique des poulets").take) then
@@ -81,7 +81,7 @@ class PlanetController < ApplicationController
         attackPower += s.attackPoints*2
       elsif s.name == "Gyropode volant"  && (attackingPlanet.user.technologies.include? Technology.where(name: "Porte-bagages atomique").take) then
         attackPower += s.attackPoints*3
-      elsif s.name == "DeLorean d'occasion"  && (attackingPlanet.user.technologies.include? Technology.where(name: "Kit carosserie").take) then
+      elsif s.name == "DeLorean"  && (attackingPlanet.user.technologies.include? Technology.where(name: "Kit carosserie").take) then
         attackPower += s.attackPoints*4
       else
         attackPower += s.attackPoints
