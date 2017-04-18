@@ -7,13 +7,13 @@
             <h4>La planete <%=p.name%></h4>
         </div>
         <div class="card-block">
-            <%= form_tag("/planete/conquer", method: "post") do%>
+            <%= form_tag("/planet/conquer", method: "post") do%>
             <%= hidden_field_tag 'attacking_planet_id', p.id%>
             <%= hidden_field_tag 'attacked_planet_id', @selected_planet.id%>
                 <%sp.each do |s|%>
                 <ul class="list-group checked-list-box">
                     <li class="list-group-item">
-                        <input type="checkbox" name="selected_spaceships" value="<%= s.id%>"><%= s.name%><br>
+                        <input type="checkbox" name="selected_spaceships[]" value="<%= s.id%>"><%= s.name%><br>
                     </li>
                 </ul>
                 <%end%>

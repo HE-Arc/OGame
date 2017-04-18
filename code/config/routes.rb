@@ -22,6 +22,7 @@ Rails.application.routes.draw do
   get 'planets' => 'planet#index'
   get 'planets/:id' => 'planet#show'
 
+  post 'planet/conquer' => 'planet#conquer'
   
 
   controller :sessions do

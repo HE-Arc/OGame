@@ -49,10 +49,9 @@ class Planet < ApplicationRecord
   end
 
   def conquer(attacker)
-      self.buildings = []
+
       self.user = attacker
       self.save
-
   end
 
 end
