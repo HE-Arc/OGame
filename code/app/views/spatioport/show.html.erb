@@ -5,7 +5,9 @@
         <div class="row">
             <div class="btn-group-vertical col-3" role="group">
                 <% @actual_user.planets.each do |p|%>
+                <% if p.buildings.include? Building.where(name: "Spatioporc").take %>
                 <a class="btn btn-secondary" href="<%= url_for(controller: 'spatioport', action: 'show', id: p.id)%>"><%= p.name %></a>
+                <%end%>
                 <%end%>
             </div>
 

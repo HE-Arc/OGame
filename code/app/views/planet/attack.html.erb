@@ -1,13 +1,14 @@
 <div class="jumbotron">
 <h1 class="text-center">Liste des planetes pouvant attaquer et de leurs flottes</h1>
+<br/>
 <%unless @suitable_spaceships_by_planet.empty?%>
     <%@suitable_spaceships_by_planet.each do |p, sp|%>
     <div class="card">
         <div class="card-header">
-            <h4>La planete <%=p.name%></h4>
+            <h2 class="h4">La planete <%=p.name%></h2>
         </div>
         <div class="card-block">
-            <%= form_tag("/planete/conquer", method: "post") do%>
+            <%= form_tag("/planet/conquer", method: "post") do%>
             <%= hidden_field_tag 'attacking_planet_id', p.id%>
             <%= hidden_field_tag 'attacked_planet_id', @selected_planet.id%>
                 <%sp.each do |s|%>
@@ -25,6 +26,13 @@
     </div>
     <%end%>
 <%else%>
-<p>Poil</p>
+<div class="card">
+  <div class="card-header">
+    <h2 class="h4">Vous n'avez pas de planètes susceptible d'attaquer, et c'est triste.</h2>
+  </div>
+  <div class="card-block">
+    <p>Vous n'avez pas de flotte disponible pour cette attaque. ¯\_(ツ)_/¯</p>
+  </div>
+</div>
 <%end%>
 </div>

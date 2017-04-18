@@ -9,12 +9,20 @@ class User < ApplicationRecord
     User.all.each do |u|
       u.planets.each do |p|
         p.buildings.each do |b|
-          if b.metalFarmPerMinute != nil then
-            u.metal += b.metalFarmPerMinute
+          if b.name == "Mine de métal" then
+            if u.technologies.include? Technology.where(name: "Perceuse").take then
+              u.metal += b.metalFarmPerMinute * 5
+            else
+              u.metal += b.metalFarmPerMinute
+            end
           end
 
-          if b.energyFarmPerMinute != nil then
-            u.energy += b.energyFarmPerMinute
+          if b.name == "Extracteur d'énergie" then
+            if u.technologies.include? Technology.where(name: "Roue à pterodactyles").take then
+              u.energy += b.energyFarmPerMinute * 5
+            else
+              u.energy += b.energyFarmPerMinute
+            end
           end
         end
       end
