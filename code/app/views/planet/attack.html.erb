@@ -1,3 +1,22 @@
 <div class="jumbotron">
-
+<h1 class="text-center">Liste des planetes pouvant attaquer et de leurs flottes</h1>
+<%unless @suitable_planets.empty?%>
+    <%@suitable_planets.each do |s|%>
+    <div class="card">
+        <div class="card-header">
+            <h4>La planete <%=s.name%></h4>
+        </div>
+        <div class="card-block">
+            <%s.spaceships.each do |sp|%>
+                
+            <%end%>
+        </div>
+        <div class="card-footer">
+            <p>susceptible d'attaquer la planete selectionnée !</p>
+        </div>
+    </div>
+    <%end%>
+<%else%>
+<p>Poil</p>
+<%end%>
 </div>
