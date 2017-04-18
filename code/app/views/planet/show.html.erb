@@ -63,6 +63,9 @@
           <h2>Information</h2>
           <p>Cette planète n'est pas colonisé ... encore' !</p>
         <% end %>
+        <% if @selected_planet.user != @actual_user%>
+          <a class="btn btn-danger text-center" href="<%= url_for(controller: 'planet', action: 'attack', planet: @selected_planet.id)%>">Conquête !</a>
+        <%end%>
         </br>
       </div>
     </div>
