@@ -15,8 +15,10 @@ class PlanetController < ApplicationController
   def buyBuilding
 
     @selected_planet = Planet.find params[:planet]
-    @building = Building.find params[:building]
-    @selected_planet.construct(@building)
+    building = Building.find params[:building]
+    buyMethod = params[:buy_method].to_i
+    @selected_planet.construct(building, buyMethod)
     redirect_to :back
   end
+
 end

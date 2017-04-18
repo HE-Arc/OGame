@@ -52,8 +52,8 @@
           <% if @selected_planet.nb_cases-@selected_planet.getCaseprise > 0 %>
             <h2>Achat de batiment</h2>
             <% @buildings.each do |b| %>
-                  <strong><%= b.name%><strong>
-                  <a class="btn btn-primary text-center" href="<%= url_for(controller: 'planet', action: 'buyBuilding', building: b.id, planet: @selected_planet.id)%>"><%= b.costMetal %> de metal</a>
+                  <strong><%= b.name%></strong>
+                  <a class="btn btn-primary text-center" href="<%= url_for(controller: 'planet', action: 'buyBuilding', buy_method: 0, building: b.id, planet: @selected_planet.id)%>"><%= b.costMetal %> de metal</a>
             <% end %>
           <% else %>
             <h2>Information sur l'état de la planète</h2>
