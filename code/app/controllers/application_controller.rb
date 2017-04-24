@@ -13,6 +13,17 @@ class ApplicationController < ActionController::Base
     @actual_user = User.find(session[:user_id]) unless session[:user_id].blank?
   end
 
+  # XXX c'est du suicide.
+  #     pour chaque requête, vous faites:
+  #     - 3 x "SELECT * FROM planets WHERE user_id = $1"
+  #       pour chaque planête : SELECT * FROM buildings INNER JOIN buildings_planets WHERE name = $2
+  #
+  # O(3n) où n est le nombre de planète.
+  # Une requête suffirait!
+  #
+  # SELECT * FROM planets INNER JOIN building_planets INNER JOIN buildings
+  # WHERE user_id = $1 and building.name in ('a', 'b', 'c')
+
   def checklabo?
     @hasLabo = false
     @actual_user.planets.each do |p|

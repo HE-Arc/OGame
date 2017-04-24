@@ -6,6 +6,11 @@ class User < ApplicationRecord
   has_and_belongs_to_many :technologies
 
   def self.update_ressources()
+    # XXX Combien de fois: SELECT FROM technologies WHERE name = $1 est fait?
+    # - O(n)
+    # - O(n^2)
+    # - O(n^3)
+    # - O(n^4)
     User.all.each do |u|
       u.planets.each do |p|
         p.buildings.each do |b|

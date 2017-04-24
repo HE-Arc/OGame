@@ -1,12 +1,8 @@
 development: &default
     adapter: postgresql
     encoding: unicode
-    database: galempire_dev
+    database: galempire
     pool: 5
-    username: postgres
-    password:
-    host: db
-
-test:
-    <<: *default
-    database: galempire_test
+    username: galempire
+    password: galempire
+    host: 127.0.0.1

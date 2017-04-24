@@ -10,6 +10,7 @@ class LaboratoryController < ApplicationController
   def buy
     tech = Technology.find params[:tech_id].to_i
     buyMethod = params[:buy_method].to_i
+    # XXX Problème Read-Write
     if buyMethod == 0 then
       if @actual_user.energy >= tech.costEnergy then
         @actual_user.technologies.push(tech)

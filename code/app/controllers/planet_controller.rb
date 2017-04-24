@@ -2,7 +2,9 @@ class PlanetController < ApplicationController
   before_action :checklabo?, :checkspatioport?, :checkministere?
 
   def index
-    @solarsystems = Solarsystem.all
+    # SELECT N+1
+    #@solarsystems = Solarsystem.all
+    @solarsystems = Solarsystem.includes(:planets).all
   end
 
   def show

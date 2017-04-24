@@ -14,6 +14,7 @@ class SpatioportController < ApplicationController
     spaceship = Spaceship.find params[:spaceship_id].to_i
     buyMethod = params[:buy_method].to_i
     selectedplanet = Planet.find params[:planet_id]
+    # XXX Problème Read-Write
     if buyMethod == 0 then
       if @actual_user.metal >= spaceship.costMetal then
         selectedplanet.spaceships.push(spaceship)
